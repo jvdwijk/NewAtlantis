@@ -8,7 +8,7 @@ public class SnapObject : MonoBehaviour {
     private float distance;
     [SerializeField] private float snapDistance;
 
-    void FixedUpdate ()
+    void LateUpdate ()
     {
         distance = Vector3.Distance(MousePosition.position.mousePosition, transform.position);
 
@@ -16,7 +16,6 @@ public class SnapObject : MonoBehaviour {
         {
             objectPosition.GetSetTargetObject.transform.position = transform.position;
             objectPosition.GetSetTargetObject.transform.rotation = transform.rotation;
-            print(transform.position);
         }
 	}
 }
