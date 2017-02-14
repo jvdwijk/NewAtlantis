@@ -16,7 +16,7 @@ public class MenuScript : MonoBehaviour
             menus[i] = menus[i].GetComponent<Canvas>();
             if(menus[i] != menus[0]) 
             {
-                menus[i].enabled = false;
+                menus[i].enabled =false;
             }
             else
             {
@@ -27,10 +27,8 @@ public class MenuScript : MonoBehaviour
 
     public void ScreenUpdate(Canvas menu)
     {
-        Debug.Log(menu.name);
         for (int i = 0; i < menus.Length; i++)
         {
-            Debug.Log(menus[i].name);
             if (menus[i].name == menu.name)
             {
                 menus[i].enabled = true;

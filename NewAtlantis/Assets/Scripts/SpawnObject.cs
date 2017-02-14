@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class SpawnObject : MonoBehaviour {
 
+    [SerializeField]
+    private ObjectToMousePosition target;
+
 	public void Instantiate(GameObject item)
     {
-        Instantiate(item,transform.position, Quaternion.identity);
+        GameObject instant = Instantiate(item, MousePosition.position.mousePosition, Quaternion.identity);
+        target.GetSetTargetObject = instant;
     }
 }
