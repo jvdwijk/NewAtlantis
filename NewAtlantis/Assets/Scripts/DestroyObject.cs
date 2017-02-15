@@ -4,17 +4,30 @@ using UnityEngine;
 
 public class DestroyObject : MonoBehaviour {
 
+    private bool demolishMode;
     [SerializeField]
     private ObjectToMousePosition selectedTarget;
 
+    void Update()
+    {
+        if (Input.GetMouseButtonDown(0) && demolishMode)
+        { 
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit))
+            {
+                Destroy(hit.collider.gameObject);
+            }
+        }
+    }
 
     /// <summary>
     /// function to cancel building
     /// </summary>
 	public void Cancel()
     {
-        print(selectedTarget.GetSetTargetObject);
-        //Destroy(selectedTarget.GetSetTargetObject);
+        Destroy(selectedTarget.GetSetTargetObject);
+        selectedTarget.GetSetTargetObject = null;
     }
 
     /// <summary>
@@ -22,7 +35,10 @@ public class DestroyObject : MonoBehaviour {
     /// </summary>
     public void Demolish()
     {
-
+        if (demolishMode)
+            demolishMode = true;
+        else
+            demolishMode = false;
     }
 
     /// <summary>

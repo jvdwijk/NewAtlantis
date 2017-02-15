@@ -9,7 +9,10 @@ public class SpawnObject : MonoBehaviour {
 
 	public void Instantiate(GameObject item)
     {
-        GameObject instant = Instantiate(item, MousePosition.position.mousePosition, Quaternion.identity);
-        target.GetSetTargetObject = instant;
+        if(target.GetSetTargetObject == null)
+        {
+            GameObject instant = Instantiate(item, MousePosition.position.mousePosition, Quaternion.identity);
+            target.GetSetTargetObject = instant;
+        }
     }
 }
