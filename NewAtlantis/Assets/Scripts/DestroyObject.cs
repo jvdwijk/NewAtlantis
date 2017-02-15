@@ -11,11 +11,13 @@ public class DestroyObject : MonoBehaviour {
     void Update()
     {
         if (Input.GetMouseButtonDown(0) && demolishMode)
-        { 
+        {
+            
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit))
+            if (Physics.Raycast(ray, out hit) && !hit.collider.gameObject.CompareTag("Ground"))
             {
+                print(demolishMode);
                 Destroy(hit.collider.gameObject);
             }
         }
@@ -36,9 +38,9 @@ public class DestroyObject : MonoBehaviour {
     public void Demolish()
     {
         if (demolishMode)
-            demolishMode = true;
-        else
             demolishMode = false;
+        else
+            demolishMode = true;
     }
 
     /// <summary>
