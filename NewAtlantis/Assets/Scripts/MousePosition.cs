@@ -7,6 +7,11 @@ public class MousePosition : MonoBehaviour {
     public static MousePosition position;
     public Vector3 mousePosition;
 
+    void Awake()
+    {
+        position = this;
+    }
+
 	void FixedUpdate ()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
