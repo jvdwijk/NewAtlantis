@@ -10,7 +10,7 @@ public class GoToSleep : MonoBehaviour {
     private Canvas selectedUI;
 
 	void Update () {
-		if(/*Input.GetKeyUp(InputManager.input.buttonMap[(int)InputManager.keyActions.action].buttonKey)*/Input.GetKeyUp(KeyCode.E))
+		if(Input.GetKeyUp(InputManager.input.buttonMap[(int)InputManager.keyActions.action].buttonKey))
         {
             nightUI.ScreenUpdate(selectedUI);
         }
