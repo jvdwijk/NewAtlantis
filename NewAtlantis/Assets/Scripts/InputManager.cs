@@ -8,7 +8,7 @@ public class InputManager : MonoBehaviour
 
     public List<ButtonMapping> buttonMap = new List<ButtonMapping>();
 
-    public enum keyActions { forward, backward, left, right , action }
+    public enum keyActions { forward, backward, left, right, action }
 
     public void SaveConfiguration()
     {
