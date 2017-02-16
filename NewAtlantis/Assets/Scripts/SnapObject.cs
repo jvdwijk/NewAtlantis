@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class SnapObject : MonoBehaviour {
 
-    [SerializeField] private ObjectToMousePosition objectPosition;
+    [SerializeField]
+    private ObjectToMousePosition objectPosition;
+    [SerializeField]
+    private float snapDistance;
     private float distance;
-    [SerializeField] private float snapDistance;
 
     void LateUpdate ()
     {
@@ -14,8 +16,13 @@ public class SnapObject : MonoBehaviour {
 
         if (objectPosition.GetSetTargetObject != null && distance < snapDistance)
         {
+            PlaceTarget.snapping = true;
             objectPosition.GetSetTargetObject.transform.position = transform.position;
             objectPosition.GetSetTargetObject.transform.rotation = transform.rotation;
+        }
+        else
+        {
+            PlaceTarget.snapping = false;
         }
 	}
 }

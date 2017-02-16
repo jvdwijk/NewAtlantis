@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class PlaceTarget : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+    [SerializeField]
+    private ObjectToMousePosition target;
+    public static bool snapping;
+
+	void FixedUpdate ()
+    {
+        if (Input.GetKeyUp(InputManager.input.buttonMap[(int)InputManager.keyActions.action].buttonKey) && target.GetSetTargetObject != null)
+        {
+            //if (snapping)
+            //{
+                //target.GetSetTargetObject = null;
+            //}
+        }
 	}
 }

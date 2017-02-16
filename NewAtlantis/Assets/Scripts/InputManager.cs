@@ -2,48 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InputManager : MonoBehaviour {
+public class InputManager : MonoBehaviour
+{
+    public static InputManager input;
 
-    /*private float moveHorizontal;
-    private float moveVertical;
-    private bool mouseClick;
+    public List<ButtonMapping> buttonMap = new List<ButtonMapping>();
 
-    private void FixedUpdate()
+    public enum keyActions { forward, backward, left, right , action }
+
+    public void SaveConfiguration()
     {
-        moveHorizontal = Input.GetAxis("Horizontal");
-        moveVertical = Input.GetAxis("Vertical");
-        mouseClick = Input.GetButton("MouseClick");
-    }    
-
-    public float GetSetVertical
-    {
-        get {return moveVertical; }
-        set {moveVertical = value; }
-    }
-
-    public float GetSetHorizontal
-    {
-        get { return moveHorizontal; }
-        set { moveHorizontal = value; }
-    }
-
-    public bool GetSetMouseClick
-    {
-        get { return mouseClick; }
-        set { mouseClick = value; }
-    }*/
-
-    public static InputManager inputManager;
-
-    public KeyCode[] buttons;
-    public string[] buttonNames;
-    public string[] buttonKeys;
-
-    void Awake()
-    {
-        for (int i = 0; i < buttons.Length; i++)
+        for (int action = (int) keyActions.forward; action <= (int) keyActions.action; action++)
         {
-            buttons[i] = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString(buttonNames[i], buttonKeys[i]));
+            PlayerPrefs.SetInt("Controls_" + action, (int)buttonMap[action].buttonKey);
+        }
+    }
+
+    public void LoadConfiguration()
+    {
+        for (int action = (int)keyActions.forward; action <= (int)keyActions.action; action++)
+        {
+            buttonMap[action].buttonKey = (KeyCode)PlayerPrefs.GetInt("Controls_" + action);
         }
     }
 }
