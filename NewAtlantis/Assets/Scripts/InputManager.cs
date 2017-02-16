@@ -5,10 +5,13 @@ using UnityEngine;
 public class InputManager : MonoBehaviour
 {
     public static InputManager input;
+    public ButtonMapping[] buttonMap;
+    public enum keyActions { forward, backward, left, right, place, action }
 
-    public List<ButtonMapping> buttonMap = new List<ButtonMapping>();
-
-    public enum keyActions { forward, backward, left, right, action }
+    void Awake()
+    {
+        input = this;
+    }
 
     public void SaveConfiguration()
     {
