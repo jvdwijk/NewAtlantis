@@ -6,15 +6,14 @@ public class PlaceTarget : MonoBehaviour {
 
     [SerializeField]
     private ObjectToMousePosition target;
-    public static bool snapping = false;
+    public bool GetSetSnapping { get; set; }
 
-	void FixedUpdate ()
+	void LateUpdate ()
     {
-        print(snapping);
-        if (Input.GetKeyUp(InputManager.input.buttonMap[(int)InputManager.keyActions.place].buttonKey) && target.GetSetTargetObject != null)
+        print(GetSetSnapping);
+        if (InputManager.input.IsKeyDownOn(InputManager.keyActions.place) && target.GetSetTargetObject != null)
         {
-            print(snapping);
-            if (snapping)
+            if (GetSetSnapping)
             {
                 target.GetSetTargetObject = null;
             }

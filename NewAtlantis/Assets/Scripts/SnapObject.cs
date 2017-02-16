@@ -9,20 +9,27 @@ public class SnapObject : MonoBehaviour {
     [SerializeField]
     private float snapDistance;
     private float distance;
+    private PlaceTarget snapping;
 
+
+    void Start()
+    {
+        snapping = GameObject.Find("ScriptHolder").GetComponent<PlaceTarget>();
+    }
     void LateUpdate ()
     {
         distance = Vector3.Distance(MousePosition.position.mousePosition, transform.position);
 
         if (objectPosition.GetSetTargetObject != null && distance < snapDistance)
         {
-            PlaceTarget.snapping = true;
+            snapping.GetSetSnapping = true;
+
             objectPosition.GetSetTargetObject.transform.position = transform.position;
             objectPosition.GetSetTargetObject.transform.rotation = transform.rotation;
         }
         else
         {
-            PlaceTarget.snapping = false;
+            snapping.GetSetSnapping = false;
         }
 	}
 }
