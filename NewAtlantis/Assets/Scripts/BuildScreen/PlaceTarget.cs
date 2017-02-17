@@ -4,16 +4,19 @@ using UnityEngine;
 
 public class PlaceTarget : MonoBehaviour {
 
-    [SerializeField]
     private ObjectToMousePosition target;
-    public bool GetSetSnapping { get; set; }
+    public bool snapping;
 
-	void LateUpdate ()
+    void Awake()
     {
-        print(GetSetSnapping);
-        if (InputManager.input.IsKeyDownOn(InputManager.keyActions.place) && target.GetSetTargetObject != null)
+        target = GameObject.Find("ScriptHolder").GetComponent<ObjectToMousePosition>();
+    }
+
+	void FixedUpdate ()
+    {
+        if (snapping)// Waarom?
         {
-            if (GetSetSnapping)
+            if (InputManager.input.IsKeyDownOn(InputManager.keyActions.place) && target.GetSetTargetObject != null)
             {
                 target.GetSetTargetObject = null;
             }

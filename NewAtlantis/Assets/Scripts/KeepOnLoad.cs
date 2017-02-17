@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class KeepOnLoad : MonoBehaviour {
 
-    private KeepOnLoad thisScript;
+    public static KeepOnLoad thisScript;
 
     void Awake()
     {

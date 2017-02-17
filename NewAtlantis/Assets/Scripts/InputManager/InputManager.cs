@@ -12,6 +12,10 @@ public class InputManager : MonoBehaviour
     void Awake()
     {
         input = this;
+        if (!PlayerPrefs.HasKey("Controls_1"))
+        {
+            SaveConfiguration();
+        }
     }
 
     public void SaveConfiguration()
@@ -19,9 +23,9 @@ public class InputManager : MonoBehaviour
         for (int action = (int) keyActions.forward; action <= (int) keyActions.action; action++)
         {
             PlayerPrefs.SetInt("Controls_" + action, (int)buttonMap[action].buttonKey);
-            PlayerPrefs.SetString("Axis" + action, buttonMap[action].axis);
-            PlayerPrefs.SetInt("AxisState" + action, (int)buttonMap[action].axisState);
-            PlayerPrefs.SetString("ButtonName" + action, buttonMap[action].buttonName);
+            PlayerPrefs.SetString("Axis_" + action, buttonMap[action].axis);
+            PlayerPrefs.SetInt("AxisState_" + action, (int)buttonMap[action].axisState);
+            PlayerPrefs.SetString("ButtonName_" + action, buttonMap[action].buttonName);
         }
     }
 
@@ -30,9 +34,9 @@ public class InputManager : MonoBehaviour
         for (int action = (int)keyActions.forward; action <= (int)keyActions.action; action++)
         {
             buttonMap[action].buttonKey = (KeyCode)PlayerPrefs.GetInt("Controls_" + action);
-            buttonMap[action].axis = PlayerPrefs.GetString("Axis" + action);
-            buttonMap[action].axisState = (InputManager.axisState)PlayerPrefs.GetInt("AxisState" + action);
-            buttonMap[action].buttonName = PlayerPrefs.GetString("ButtonName" + action);
+            buttonMap[action].axis = PlayerPrefs.GetString("Axis_" + action);
+            buttonMap[action].axisState = (InputManager.axisState)PlayerPrefs.GetInt("AxisState_" + action);
+            buttonMap[action].buttonName = PlayerPrefs.GetString("ButtonName_" + action);
         }
     }
 

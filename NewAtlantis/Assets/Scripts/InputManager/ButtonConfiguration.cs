@@ -16,10 +16,7 @@ public class ButtonConfiguration : MonoBehaviour {
         InputManager.input.LoadConfiguration();
         shouldRemap = false;
 
-        for (int action = (int)InputManager.keyActions.forward; action <= (int)InputManager.keyActions.action; action++)
-        {
-            buttonLabel[action].text = InputManager.input.buttonMap[action].buttonName;
-        }
+        Reload();
 	}
 
 	void Update () {
@@ -80,5 +77,13 @@ public class ButtonConfiguration : MonoBehaviour {
         remapAction = (InputManager.keyActions)action;
         buttonLabel[action].text = "press a key";
         shouldRemap = true;
+    }
+
+    public void Reload()
+    {
+        for (int action = (int)InputManager.keyActions.forward; action <= (int)InputManager.keyActions.action; action++)
+        {
+            buttonLabel[action].text = InputManager.input.buttonMap[action].buttonName;
+        }
     }
 }
