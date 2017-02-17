@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class SnapObject : MonoBehaviour {
 
-    [SerializeField]
     private ObjectToMousePosition objectPosition;
     [SerializeField]
     private float snapDistance;
     private float distance;
-    private PlaceTarget snap;
+    public bool snapping;
 
     void Awake()
     {
-        snap = gameObject.GetComponent<PlaceTarget>();
+        objectPosition = GameObject.Find("ScriptHolder").GetComponent<ObjectToMousePosition>();
     }
 
     void LateUpdate ()
@@ -25,12 +24,11 @@ public class SnapObject : MonoBehaviour {
             objectPosition.GetSetTargetObject.transform.position = transform.position;
             objectPosition.GetSetTargetObject.transform.rotation = transform.rotation;
 
-            snap.snapping = true;
-
+            snapping = true;
         }
         else
         {
-            snap.snapping = false;
+            snapping = false;
         }
 	}
 }

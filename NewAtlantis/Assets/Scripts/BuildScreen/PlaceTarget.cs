@@ -4,21 +4,24 @@ using UnityEngine;
 
 public class PlaceTarget : MonoBehaviour {
 
+    private SnapObject snapObject;
     private ObjectToMousePosition target;
-    public bool snapping;
 
     void Awake()
     {
+        snapObject = gameObject.GetComponent<SnapObject>();
         target = GameObject.Find("ScriptHolder").GetComponent<ObjectToMousePosition>();
     }
 
-	void FixedUpdate ()
+	void Update ()
     {
-        if (snapping)// Waarom?
+        if (snapObject.snapping)// Waarom?
         {
             if (InputManager.input.IsKeyDownOn(InputManager.keyActions.place) && target.GetSetTargetObject != null)
             {
                 target.GetSetTargetObject = null;
+                this.enabled = false;
+                snapObject.enabled = false;
             }
         }
 	}

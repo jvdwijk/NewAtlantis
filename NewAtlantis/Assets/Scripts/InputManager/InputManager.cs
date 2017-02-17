@@ -6,7 +6,7 @@ public class InputManager : MonoBehaviour
 {
     public static InputManager input;
     public ButtonMapping[] buttonMap;
-    public enum keyActions { forward, backward, left, right, place, action }
+    public enum keyActions { forward, backward, left, right, place, up, down, action }
     public enum axisState { none, positive, negative }
 
     void Awake()
