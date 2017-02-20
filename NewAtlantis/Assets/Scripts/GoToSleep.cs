@@ -16,7 +16,7 @@ public class GoToSleep : MonoBehaviour {
 
         distance = Vector3.Distance(player.transform.position , transform.position);
 
-        if (Input.GetKeyUp(InputManager.input.buttonMap[(int)InputManager.keyActions.action].buttonKey) && distance <= 3)
+        if (InputManager.input.OnKeyDown(InputManager.keyActions.action) && distance <= 3)
         {
             nightUI.ScreenUpdate(selectedUI);
         }

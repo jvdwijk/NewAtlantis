@@ -17,7 +17,7 @@ public class PlaceTarget : MonoBehaviour {
     {
         if (snapObject.snapping)// Waarom?
         {
-            if (InputManager.input.IsKeyDownOn(InputManager.keyActions.place) && target.GetSetTargetObject != null)
+            if (InputManager.input.OnKeyDown(InputManager.keyActions.place) && target.GetSetTargetObject != null)
             {
                 target.GetSetTargetObject = null;
                 this.enabled = false;

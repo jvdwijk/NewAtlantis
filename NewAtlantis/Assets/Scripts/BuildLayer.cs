@@ -19,7 +19,7 @@ public class BuildLayer : MonoBehaviour {
 
     void Update()
     {
-        if (InputManager.input.IsKeyDownOn(InputManager.keyActions.up))
+        if (InputManager.input.OnKeyDown(InputManager.keyActions.up))
         {
             layers[count].SetActive(false);
             
@@ -31,7 +31,7 @@ public class BuildLayer : MonoBehaviour {
             }
             layers[count].SetActive(true);
         }
-        if (InputManager.input.IsKeyDownOn(InputManager.keyActions.down))
+        if (InputManager.input.OnKeyDown(InputManager.keyActions.down))
         {
             layers[count].SetActive(false);
 

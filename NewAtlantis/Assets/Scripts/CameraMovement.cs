@@ -5,19 +5,19 @@ using UnityEngine;
 public class CameraMovement : MonoBehaviour {
 
 	void FixedUpdate () {
-		if(InputManager.input.IsKeyOn(InputManager.keyActions.left))
+		if(InputManager.input.OnKey(InputManager.keyActions.left))
         {
             MoveCam(new Vector2(-1,0));
         }
-        else if (InputManager.input.IsKeyOn(InputManager.keyActions.right))
+        else if (InputManager.input.OnKey(InputManager.keyActions.right))
         {
             MoveCam(new Vector2(1, 0));
         }
-        if (InputManager.input.IsKeyOn(InputManager.keyActions.forward))
+        if (InputManager.input.OnKey(InputManager.keyActions.forward))
         {
             MoveCam(new Vector2(0, 1));
         }
-        else if (InputManager.input.IsKeyOn(InputManager.keyActions.backward))
+        else if (InputManager.input.OnKey(InputManager.keyActions.backward))
         {
             MoveCam(new Vector2(0,-1));
         }

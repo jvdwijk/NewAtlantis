@@ -40,7 +40,7 @@ public class InputManager : MonoBehaviour
         }
     }
 
-    public bool IsKeyOn(keyActions action)
+    public bool OnKey(keyActions action)
     {
         if (buttonMap[(int)action].axisState == axisState.none)
         {
@@ -69,7 +69,7 @@ public class InputManager : MonoBehaviour
         return false;
     }
 
-    public bool IsKeyDownOn(keyActions action)
+    public bool OnKeyDown(keyActions action)
     {
         if (buttonMap[(int)action].axisState == axisState.none)
         {
