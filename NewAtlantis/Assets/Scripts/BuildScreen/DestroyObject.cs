@@ -17,8 +17,7 @@ public class DestroyObject : MonoBehaviour {
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit) && !hit.collider.gameObject.CompareTag("Ground"))
             {
-                print(demolishMode);
-                Destroy(hit.collider.gameObject);
+                Destroy(hit.collider.transform.parent.gameObject);
             }
         }
     }
