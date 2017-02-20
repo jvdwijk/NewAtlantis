@@ -21,10 +21,9 @@ public class SnapObject : MonoBehaviour {
         
         if (objectPosition.GetSetTargetObject != null && distance <= snapDistance)
         {
+            snapping = true;
             objectPosition.GetSetTargetObject.transform.position = transform.position;
             objectPosition.GetSetTargetObject.transform.rotation = transform.rotation;
-
-            snapping = true;
         }
         else
         {

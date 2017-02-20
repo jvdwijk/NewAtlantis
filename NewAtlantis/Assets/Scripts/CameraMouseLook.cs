@@ -4,29 +4,31 @@ using UnityEngine;
 
 public class CameraMouseLook : MonoBehaviour {
 
-    private Vector2 mouseLook;
-    private Vector2 smoothVector;
+    private Vector2 rotation;
+    private Vector2 currentRotation;
+    private Vector2 rotationVelocity;
+    private float lookSensetivity = 5;
+    private float lookSmoothDamp = 0.1f;
 
-    public float sensitivity = 5.0f;
-    public float smoothing = 2.0f;
+    private Rigidbody rigidBody;
 
-    private GameObject character;
-
-    void Start ()
+    void Awake()
     {
-        character = this.transform.parent.gameObject;
+        rigidBody = this.transform.parent.GetComponent<Rigidbody>();
     }
-	
-	void Update ()
-    {
-        var mouseDelta = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
-        mouseDelta = Vector2.Scale(mouseDelta, new Vector2(sensitivity * smoothing, sensitivity * smoothing));
-        smoothVector.x = Mathf.Lerp(smoothVector.x, mouseDelta.x, 1f / smoothing);
-        smoothVector.y = Mathf.Lerp(smoothVector.y, mouseDelta.y, 1f / smoothing);
-        mouseLook += smoothVector;
-        mouseLook.y = Mathf.Clamp(mouseLook.y, -90, 90);
 
-        transform.localRotation = Quaternion.AngleAxis(-mouseLook.y, Vector3.right);
-        character.transform.localRotation = Quaternion.AngleAxis(mouseLook.x, character.transform.up);
+    void Update()
+    {
+        rotation.x -= Input.GetAxis("Mouse Y") * lookSensetivity;
+        rotation.y += Input.GetAxis("Mouse X") * lookSensetivity;
+
+        rotation.x = Mathf.Clamp(rotation.x, -90, 90);
+
+        currentRotation.x = Mathf.SmoothDamp(currentRotation.x, rotation.x, ref rotationVelocity.x, lookSmoothDamp);
+        currentRotation.y = Mathf.SmoothDamp(currentRotation.y, rotation.y, ref rotationVelocity.y, lookSmoothDamp);
+
+        transform.rotation = Quaternion.Euler(currentRotation.x, currentRotation.y, 0);
+
+        rigidBody.MoveRotation(Quaternion.Euler(0, currentRotation.y, 0));
     }
 }

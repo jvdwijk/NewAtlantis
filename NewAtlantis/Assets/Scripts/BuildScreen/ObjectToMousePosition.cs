@@ -14,7 +14,7 @@ public class ObjectToMousePosition : MonoBehaviour
         set
         { targetObject = value; }
     }
-    void FixedUpdate()
+    void Update()
     {
         if (targetObject != null)
         {

@@ -45,7 +45,7 @@ public class CharacterMovement : MonoBehaviour {
         }
         else
         {
-            rigidBody.velocity = new Vector3(0, step.y, 0);
+            rigidBody.velocity = new Vector3(0, rigidBody.velocity.y, 0);
         }
     }
 }

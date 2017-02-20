@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour {
 
-	void FixedUpdate () {
+	void FixedUpdate ()
+    {
 		if(InputManager.input.OnKey(InputManager.keyActions.left))
         {
+            print("print");
             MoveCam(new Vector2(-1,0));
         }
         else if (InputManager.input.OnKey(InputManager.keyActions.right))

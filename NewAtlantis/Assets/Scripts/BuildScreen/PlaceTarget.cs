@@ -13,7 +13,7 @@ public class PlaceTarget : MonoBehaviour {
         target = GameObject.Find("ScriptHolder").GetComponent<ObjectToMousePosition>();
     }
 
-	void Update ()
+	void LateUpdate ()
     {
         if (snapObject.snapping)// Waarom?
         {

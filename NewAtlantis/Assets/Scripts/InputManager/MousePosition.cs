@@ -6,6 +6,8 @@ public class MousePosition : MonoBehaviour {
 
     public static MousePosition position;
     public Vector3 mousePosition;
+    [SerializeField]
+    private Camera buildCamera;
 
     void Awake()
     {
@@ -14,11 +16,14 @@ public class MousePosition : MonoBehaviour {
 
 	void FixedUpdate ()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit))
+        if (buildCamera.enabled)
         {
-            mousePosition = hit.point; 
+            Ray ray = buildCamera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit))
+            {
+                mousePosition = hit.point;
+            }
         }
     }
 }
