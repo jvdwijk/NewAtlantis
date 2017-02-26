@@ -4,29 +4,18 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour {
 
-	void FixedUpdate ()
+    private float verticalInput;
+    private float horizontalInput;
+
+    void GetInput()
     {
-		if(InputManager.input.OnKey(InputManager.keyActions.left))
-        {
-            print("print");
-            MoveCam(new Vector2(-1,0));
-        }
-        else if (InputManager.input.OnKey(InputManager.keyActions.right))
-        {
-            MoveCam(new Vector2(1, 0));
-        }
-        if (InputManager.input.OnKey(InputManager.keyActions.forward))
-        {
-            MoveCam(new Vector2(0, 1));
-        }
-        else if (InputManager.input.OnKey(InputManager.keyActions.backward))
-        {
-            MoveCam(new Vector2(0,-1));
-        }
+        verticalInput = InputManager.input.GetAxis(InputManager.keyActions.forward) - InputManager.input.GetAxis(InputManager.keyActions.backward);
+        horizontalInput = InputManager.input.GetAxis(InputManager.keyActions.right) - InputManager.input.GetAxis(InputManager.keyActions.left);
     }
 
-    private void MoveCam(Vector2 direction)
+    void Update()
     {
-        transform.position += new Vector3(direction.x, 0, direction.y);
+        GetInput();
+        gameObject.transform.Translate(horizontalInput, verticalInput, 0);
     }
 }

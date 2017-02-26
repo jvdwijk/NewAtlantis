@@ -12,6 +12,7 @@ public class SpawnObject : MonoBehaviour {
         if(target.GetSetTargetObject == null)
         {
             GameObject instant = Instantiate(item, MousePosition.position.mousePosition, Quaternion.identity);
+            instant.transform.parent = BuildLayer.currentLayer.transform;
             target.GetSetTargetObject = instant;
         }
     }
