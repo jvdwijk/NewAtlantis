@@ -15,10 +15,11 @@ public class GoToSleep : MonoBehaviour {
 	void Update () {
 
         distance = Vector3.Distance(player.transform.position , transform.position);
-
         if (InputManager.input.OnKeyDown(InputManager.keyActions.action) && distance <= 3)
         {
             nightUI.ScreenUpdate(selectedUI);
+            Game.mainBase = GameObject.Find("Layers");
+            SaveLoad.Save();
         }
     }
 }

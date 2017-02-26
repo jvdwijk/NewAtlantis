@@ -5,10 +5,5 @@ using UnityEngine;
 public class Game {
 
     public static Game current;
-    public Base mainBase;
-
-	public Game ()
-    {
-        mainBase = new Base();
-    }
+    public static GameObject mainBase;
 }

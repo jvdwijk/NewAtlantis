@@ -4,11 +4,11 @@ using UnityEngine;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
-public class SaveLoad {
+public static class SaveLoad {
 
     public static List<Game> savedGames = new List<Game>();
 
-    public void Save()
+    public static void Save()
     {
         savedGames.Add(Game.current);
         BinaryFormatter binaryFormatter = new BinaryFormatter();
@@ -17,7 +17,7 @@ public class SaveLoad {
         file.Close();
     }
 
-    public void Load()
+    public static void Load()
     {
         if(File.Exists(Application.persistentDataPath + "/SavedGames.na"))
         {
