@@ -4,17 +4,42 @@ using UnityEngine;
 
 public class Load : MonoBehaviour {
 
-    [SerializeField]
-    private Canvas loadedGames;
     private int count;
+    private bool uiEnabled = true;
 
-	void Start ()
+    void Awake()
     {
-		foreach(Game g in SaveLoad.savedGames)
+        SaveLoad.Load();
+    }
+
+    void OnGUI()
+    {
+        GUILayout.BeginArea(new Rect(0, 0, Screen.width, Screen.height));
+        GUILayout.BeginHorizontal();
+        GUILayout.FlexibleSpace();
+        GUILayout.BeginVertical();
+        GUILayout.FlexibleSpace();
+
+        print(SaveLoad.savedGames.Count);
+
+        if (uiEnabled)
         {
-            
+            foreach (Game g in SaveLoad.savedGames)
+            {
+                GUILayout.Box("test");
+                GUILayout.Space(20);
+
+                if (GUILayout.Button(g.ToString()))
+                {
+                    Game.current = g;
+                }
+            }
         }
-	}
 
-
+        GUILayout.FlexibleSpace();
+        GUILayout.EndVertical();
+        GUILayout.FlexibleSpace();
+        GUILayout.EndHorizontal();
+        GUILayout.EndArea();
+    }
 }
