@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BuildLayer : MonoBehaviour {
+    [Header("Layers")]
     [SerializeField]
     private float layerOfset;
     [SerializeField]

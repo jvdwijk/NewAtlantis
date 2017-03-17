@@ -5,7 +5,7 @@ using UnityEngine;
 public class Load : MonoBehaviour {
 
     private int count;
-    private bool uiEnabled = true;
+    private bool uiEnabled = false;
 
     void Awake()
     {
@@ -28,10 +28,12 @@ public class Load : MonoBehaviour {
             {
                 GUILayout.Box("test");
                 GUILayout.Space(20);
-
-                if (GUILayout.Button(g.ToString()))
+                if(g != null)
                 {
-                    Game.current = g;
+                    if (GUILayout.Button(g.ToString()))
+                    {
+                        Game.current = g;
+                    }
                 }
             }
         }
