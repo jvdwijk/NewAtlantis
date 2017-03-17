@@ -15,14 +15,12 @@ public class PlaceTarget : MonoBehaviour {
 
 	void LateUpdate ()
     {
-        if (snapObject.snapping)// Waarom?
+        if (!snapObject.snapping || !InputManager.input.OnKeyDown(InputManager.keyActions.place) || target.GetSetTargetObject == null)
         {
-            if (InputManager.input.OnKeyDown(InputManager.keyActions.place) && target.GetSetTargetObject != null)
-            {
-                target.GetSetTargetObject = null;
-                this.enabled = false;
-                snapObject.enabled = false;
-            }
+            return;
         }
-	}
+        target.GetSetTargetObject = null;
+        this.enabled = false;
+        snapObject.enabled = false;
+    }
 }
