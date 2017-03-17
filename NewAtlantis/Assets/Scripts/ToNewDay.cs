@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LoadDay : MonoBehaviour {
 
+    [Header("UI")]
     [SerializeField]
     private MenuScript dayUI;
     [SerializeField]

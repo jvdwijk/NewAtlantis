@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CameraSwitcher : MonoBehaviour {
 
+    [Header("Camera's")]
     [SerializeField]
     private Camera[] cameras;
     private int currentCamera = 0;

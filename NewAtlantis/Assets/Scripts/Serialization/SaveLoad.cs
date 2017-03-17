@@ -21,12 +21,13 @@ public static class SaveLoad {
 
     public static void Load()
     {
-        if(File.Exists(filePath))
+        if(!File.Exists(filePath))
         {
-            BinaryFormatter binaryFormatter = new BinaryFormatter();
-            FileStream file = File.Open(filePath, FileMode.Open);
-            SaveLoad.savedGames = (List<Game>)binaryFormatter.Deserialize(file);
-            file.Close();
+            return;
         }
+        BinaryFormatter binaryFormatter = new BinaryFormatter();
+        FileStream file = File.Open(filePath, FileMode.Open);
+        SaveLoad.savedGames = (List<Game>)binaryFormatter.Deserialize(file);
+        file.Close();
     }
 }

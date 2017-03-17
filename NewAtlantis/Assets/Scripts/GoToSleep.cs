@@ -19,6 +19,7 @@ public class GoToSleep : MonoBehaviour {
         distance = Vector3.Distance(player.transform.position , transform.position);
         Save();
     }
+
     private void Save()
     {
         if (InputManager.input.OnKeyDown(InputManager.keyActions.action) && distance <= 3)
