@@ -5,14 +5,23 @@ using UnityEngine;
 public class DestroyObject : MonoBehaviour {
 
     private bool demolishMode;
+    [Header("Target")]
     [SerializeField]
     private ObjectToMousePosition selectedTarget;
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && demolishMode)
+        if(demolishMode)
         {
-            
+            CheckInput();
+        }
+    }
+
+    private void CheckInput()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit) && !hit.collider.gameObject.CompareTag("Ground"))
