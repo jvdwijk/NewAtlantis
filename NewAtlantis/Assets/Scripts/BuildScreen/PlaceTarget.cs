@@ -13,14 +13,16 @@ public class PlaceTarget : MonoBehaviour {
         target = GameObject.Find("ScriptHolder").GetComponent<ObjectToMousePosition>();
     }
 
-	void LateUpdate ()
+	void Update ()
     {
-        if (!snapObject.snapping || !InputManager.input.OnKeyDown(InputManager.keyActions.place) || target.GetSetTargetObject == null)
+        if (snapObject.snapping)// Waarom?
         {
-            return;
+            if (InputManager.input.OnKeyDown(InputManager.keyActions.place))
+            {
+                snapObject.enabled = false;
+                target.GetSetTargetObject = null;
+                this.enabled = false;
+            }
         }
-        target.GetSetTargetObject = null;
-        this.enabled = false;
-        snapObject.enabled = false;
-    }
+	}
 }
