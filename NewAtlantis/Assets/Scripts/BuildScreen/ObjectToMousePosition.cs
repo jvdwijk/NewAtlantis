@@ -16,9 +16,10 @@ public class ObjectToMousePosition : MonoBehaviour
     }
     void Update()
     {
-        if (targetObject != null)
+        if (targetObject == null)
         {
-            targetObject.transform.position = MousePosition.position.mousePosition;
+            return;
         }
+        targetObject.transform.position = MousePosition.position.mousePosition;
     }
 }

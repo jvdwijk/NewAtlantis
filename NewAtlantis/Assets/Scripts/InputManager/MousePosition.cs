@@ -6,6 +6,7 @@ public class MousePosition : MonoBehaviour {
 
     public static MousePosition position;
     public Vector3 mousePosition;
+    [Header("Camera")]
     [SerializeField]
     private Camera buildCamera;
 
@@ -16,14 +17,15 @@ public class MousePosition : MonoBehaviour {
 
 	void FixedUpdate ()
     {
-        if (buildCamera.enabled)
+        if (!buildCamera.enabled)
         {
-            Ray ray = buildCamera.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit))
-            {
-                mousePosition = hit.point;
-            }
+            return;
+        }
+        Ray ray = buildCamera.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit))
+        {
+            mousePosition = hit.point;
         }
     }
 }

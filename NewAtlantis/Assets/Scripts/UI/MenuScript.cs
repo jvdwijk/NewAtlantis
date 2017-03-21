@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MenuScript : MonoBehaviour
 {
-
+    [Header("UI")]
     [SerializeField]
     private Canvas[] menus; //always put in the main menu first!
 
