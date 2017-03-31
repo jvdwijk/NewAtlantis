@@ -12,6 +12,8 @@ public class Time : MonoBehaviour {
     [Header("Time in secconds")] //Define how long it takes to update the time of your game.
     [SerializeField] 
     private float timeUpdate;
+    [SerializeField]
+    private int minutesAmount;
 
     //Make it static so you can use it in your other scripts.
     static public int hours;
@@ -31,7 +33,7 @@ public class Time : MonoBehaviour {
     {
         while (hours < endTime)
         {
-            totalMinutes += 10;
+            totalMinutes += minutesAmount;
             hours = totalMinutes / 60;
             minutes = totalMinutes - (hours * 60);
 

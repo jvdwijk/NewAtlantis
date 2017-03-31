@@ -10,7 +10,7 @@ public class Clock : MonoBehaviour {
 
 	void Update()
     {
-        if (Time.hours > 24) //if day passed
+        if (Time.hours >= 24) //if day passed
         {
             UpdateClockUI(24);
         }
