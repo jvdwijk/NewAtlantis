@@ -13,12 +13,10 @@ public class LoadButton : MonoBehaviour {
 	void Start () {
         for (int i = 0; i < 5; i++)
         {
+
+            //CreateButton.CreateButton(parentCanvas, position, method);
             GameObject button = Instantiate(buttonPrefab) as GameObject;
             button.transform.SetParent(parentCanvas.transform, false);
         }
-	}
-	
-	void Update () {
-		
 	}
 }
